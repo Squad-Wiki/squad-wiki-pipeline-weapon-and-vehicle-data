@@ -1,7 +1,7 @@
 <div align="center">
 <img src="doc/images/Squad_Wiki_Logo.png" alt="Squad Wiki Pipeline Logo" width="500"/>
 
-#### Squad Wiki Pipeline: Map Data
+#### Squad Wiki Pipeline: Weapon and Vehicle Data
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-data)
 ![GitHub](https://img.shields.io/github/license/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-dataa)
