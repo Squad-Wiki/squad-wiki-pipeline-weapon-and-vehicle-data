@@ -34,6 +34,10 @@ class InvalidAttribute(AttributeError):
 
 
 
+class InvalidDirectoryKeySetup(KeyError):
+    def __init__(self, type, key):
+        raise KeyError(f"Key {key} is missing in {type} in the weaponsDirectoryObject")
+
 
 # ----- Code -----
 
@@ -43,8 +47,25 @@ weaponsJSON = {}
 print("Squad Wiki Pipeline: Weapons and Vehicles")
 
 for attr, value in weaponsDirectoryObject.items():
-    weaponsDirectory = value["directory"]
-    listOfWeaponFolders = value["folders"]
+
+    try:
+        weaponsDirectory = value["weaponDirectory"]
+    except KeyError:
+        raise InvalidDirectoryKeySetup(attr, "weaponDirectory")
+
+    try:
+        factionsDirectory = value["factionsDirectory"]
+    except KeyError:
+        raise InvalidDirectoryKeySetup(attr, "factionsDirectory")
+
+    try:
+        listOfWeaponFolders = value["folders"]
+    except KeyError:
+        raise InvalidDirectoryKeySetup(attr, "folders")
+
+    print(f"Searching through {attr} factions...")
+
+    searchFolderForFactions(factionsDirectory)
 
     print(f"Searching through {attr} weapons...")
 
@@ -186,10 +207,10 @@ for attr, value in weaponsDirectoryObject.items():
 
             weaponsJSON[weaponName] = weaponInfo
 
-with open(f"{installDirectory}GAMER.json", "w") as f:
+with open(f"{installDirectory}weaponInfo.json", "w") as f:
     json.dump(weaponsJSON, f, indent=4)
 
-print(f"File exported at {installDirectory}GAMER.json")
+print(f"File exported at {installDirectory}weaponInfo.json")
 
 '''['recoil_alignment_new_shoulder_alignment', 'recoil_alignment_shoulder_target_offset', 'recoil_alignment_shoulder_current_offset', 'recoil_alignment_new_grip_alignment', 'recoil_alignment_grip_target_offset',
  'recoil_alignment_grip_current_offset', 'recoil_alignment_mult', 'recoil_magnitude', 'is_holding_breath', 'holding_breath_sway_factor', 'bul
