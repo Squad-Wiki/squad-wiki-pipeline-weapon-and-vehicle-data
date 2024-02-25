@@ -92,7 +92,6 @@ def searchFolderForFactions(baseFolder):
                     for roleSetting in unrealFaction.roles:
                         role = roleSetting.setting
 
-                        print("Looking at: " + role.get_name())
                         # Loop through the inventory slots
                         for inventorySlot in role.inventory:
                             slotWeapons = inventorySlot.weapon_items
@@ -100,7 +99,9 @@ def searchFolderForFactions(baseFolder):
                             for slotWeapon in slotWeapons:
                                 weaponInSlotName = str(slotWeapon.equipable_item.get_name())
 
+                                # If the weapon slot is in the array then append to the factions list otherwise just add the dict in
                                 if weaponInSlotName in weapons:
+                                    # If the faction is not present yet, then add it
                                     if str(factionID) not in weapons[weaponInSlotName]["factions"]:
                                         weapons[weaponInSlotName]["factions"].append(str(factionID))
                                 else:
@@ -108,9 +109,6 @@ def searchFolderForFactions(baseFolder):
                                         "factions": [str(factionID)]
                                     }
 
-
-                x = 1
-                #print(item)
 
     return weapons
 
@@ -123,6 +121,8 @@ print("Squad Wiki Pipeline: Weapons and Vehicles")
 
 for attr, value in weaponsDirectoryObject.items():
 
+    # --- Loading Files ---
+    # Try saving the directories, if there is an issue then raise an exception
     try:
         weaponsDirectory = value["weaponDirectory"]
     except KeyError:
@@ -138,10 +138,12 @@ for attr, value in weaponsDirectoryObject.items():
     except KeyError:
         raise InvalidDirectoryKeySetup(attr, "folders")
 
+    # --- Get Faction Info ---
     print(f"Searching through {attr} factions...")
 
     weaponFactions = searchFolderForFactions(factionsDirectory)
 
+    # --- Get Weapon Info ---
     print(f"Searching through {attr} weapons...")
 
     for weaponFolder in listOfWeaponFolders:
@@ -201,11 +203,9 @@ for attr, value in weaponsDirectoryObject.items():
             damageFOMaxDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTCloseDistance)
             damageFOMinDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTFarDistance)
 
+            # Get faction info for the weapon
             factions = []
 
-            print(weaponName)
-            print(weaponFactions)
-            print(weaponFactions[weaponName + "_C"])
             if weaponName + "_C" in weaponFactions:
                 factions = weaponFactions[weaponName + "_C"]["factions"]
 
@@ -306,6 +306,7 @@ for attr, value in weaponsDirectoryObject.items():
 
             weaponsJSON[weaponName] = weaponInfo
 
+# Write file
 with open(f"{installDirectory}weaponInfo.json", "w") as f:
     json.dump(weaponsJSON, f, indent=4)
 
