@@ -94,11 +94,11 @@ for attr, value in weaponsDirectoryObject.items():
                 pathToCut = f"{installDirectory}SquadEditor\\Squad\\Content\\"
                 newPath = "/Game/" + pathToSearch[len(pathToCut):]
 
-            if "expansions" in weaponsDirectory or "Expansions" in weaponsDirectory:
+            elif "expansions" in weaponsDirectory or "Expansions" in weaponsDirectory:
                 pathToCut = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Expansions\\"
                 newPath = "/" + pathToSearch[len(pathToCut):]
 
-            if "mods" in weaponsDirectory or "Mods" in weaponsDirectory:
+            elif "mods" in weaponsDirectory or "Mods" in weaponsDirectory:
                 pathToCut = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Mods\\"
                 newPath = "/" + pathToSearch[len(pathToCut):]
 
