@@ -5,6 +5,23 @@ import os
 import json
 
 
+# ----- Settings -----
+# Install Path of the SDK
+installDirectory = "E:\\Squad SDK\\"
+
+# Directory to export to
+exportDirectory = "E:\\Squad SDK\\"
+
+# Dict that contains directory and folders. Modders can add a new dict under vanilla with a directory and one set of sub-folders to look through
+weaponsDirectoryObject = {
+    "vanilla": {
+        "weaponDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Blueprints\\Items\\",
+        "factionsDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Settings\\FactionSetups\\",
+        "folders": ["MachineGuns", "Pistols", "Rifles"]
+    },
+}
+
+
 # ----- Exception Classes -----
 class InvalidWeaponFolder(OSError):
     def __init__(self, folder):
@@ -16,17 +33,6 @@ class InvalidAttribute(AttributeError):
         raise AttributeError(f"Invalid Weapon: {weapon}")
 
 
-# ----- Settings -----
-# Install Path
-installDirectory = "E:\\Squad SDK\\"
-
-# Dict that contains directory and folders. Modders can add a new dict under vanilla with a directory and one set of sub-folders to look through
-weaponsDirectoryObject = {
-    "vanilla": {
-        "directory": f"{installDirectory}\\SquadEditor\\Squad\\Content\\Blueprints\\Items\\",
-        "folders": ["MachineGuns", "Pistols", "Rifles"]
-    },
-}
 
 
 # ----- Code -----
