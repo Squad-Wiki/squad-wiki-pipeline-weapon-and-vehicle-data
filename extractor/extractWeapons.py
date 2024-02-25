@@ -12,7 +12,8 @@ installDirectory = "E:\\Squad SDK\\"
 # Directory to export to
 exportDirectory = "E:\\Squad SDK\\"
 
-# Dict that contains directory and folders. Modders can add a new dict under vanilla with a directory and one set of sub-folders to look through
+# Dict that contains directory and folders. Modders can add a new dict under vanilla with a directory and one set of sub-folders to look through.
+# Note that the file structure needs to be the same as vanilla. If your having issues, reach out on github
 weaponsDirectoryObject = {
     "vanilla": {
         "weaponDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Blueprints\\Items\\",
@@ -157,6 +158,7 @@ for attr, value in weaponsDirectoryObject.items():
         # Loop through each file/dir in the folder
         for weapon in os.listdir(weaponsDirectory + weaponFolder):
 
+            # -- Setup --
             weaponName = weapon.split(".")[0]
             # Only look at files, not child directories
             if not os.path.isfile(pathToSearch + "\\" + weapon):
@@ -187,14 +189,15 @@ for attr, value in weaponsDirectoryObject.items():
             # Create a shorthand less descriptive version
             uWD = unrealWeaponDefault
 
-            # print(uWD.weapon_config.damage_falloff_curve.get_time_range())
+
+            # -- Tracers --
 
             # Check to see if the tracer projectile class is present, if it is grab the name of it, otherwise leave as None
             tracerProjectileClass = uWD.weapon_config.tracer_projectile_class
             if tracerProjectileClass is not None:
                 tracerProjectileClass = uWD.weapon_config.tracer_projectile_class.get_name()
 
-            # Curves
+            # -- Curves --
 
             # Damage Curve
             damageFallOffTimeRange = uWD.weapon_config.damage_falloff_curve.get_time_range()  # Get max and min of time (distance) range
@@ -203,6 +206,8 @@ for attr, value in weaponsDirectoryObject.items():
             damageFOMaxDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTCloseDistance)
             damageFOMinDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTFarDistance)
 
+
+            # -- Faction --
             # Get faction info for the weapon
             factions = []
 
@@ -211,6 +216,7 @@ for attr, value in weaponsDirectoryObject.items():
 
 
             # Need to add: ICO
+            # -- Dict Creation --
             try:
                 weaponInfo = {
                     "displayName": str(uWD.display_name),
