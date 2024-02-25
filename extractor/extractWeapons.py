@@ -214,6 +214,16 @@ for attr, value in weaponsDirectoryObject.items():
             if weaponName + "_C" in weaponFactions:
                 factions = weaponFactions[weaponName + "_C"]["factions"]
 
+            # -- Attachments --
+
+            attachments = uWD.attachment_classes
+
+            attachmentNames = []
+
+            for attachment in attachments:
+                if attachment is not None:
+                    attachmentName = attachment.get_name()
+                    attachmentNames.append(attachmentName)
 
             # Need to add: ICO
             # -- Dict Creation --
@@ -290,7 +300,7 @@ for attr, value in weaponsDirectoryObject.items():
                     # Physical info of the gun
                     "physicalInfo": {
                         "skeletalMesh": str(uWD.mesh1p.skeletal_mesh.get_name()),
-                        "attachments": "TOBEADDED",
+                        "attachments": attachmentNames,
                     },
 
                 }
