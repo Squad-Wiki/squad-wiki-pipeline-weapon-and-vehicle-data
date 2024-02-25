@@ -33,11 +33,86 @@ class InvalidAttribute(AttributeError):
         raise AttributeError(f"Invalid Weapon: {weapon}")
 
 
-
 class InvalidDirectoryKeySetup(KeyError):
     def __init__(self, type, key):
         raise KeyError(f"Key {key} is missing in {type} in the weaponsDirectoryObject")
 
+def searchFolderForFactions(baseFolder):
+    # Blacklist for folders/files to not check CASE SENSITIVE
+    blacklist = ["Templates", "TestFactionSetups", "UI", "Tutorials", "Units"]
+    weapons = {}
+    '''
+        "name": {
+            "factions": []
+        }
+    '''
+    for item in os.listdir(baseFolder):
+        # If the item is blacklisted, skip
+        if not any(x == item for x in blacklist):
+            # If it's a folder, we need to search it so recursively search
+            if os.path.isdir(baseFolder + item):
+                returnWeapons = searchFolderForFactions(baseFolder + item + "\\")
+
+                # Merge returned weapon and current weapons
+                for attr, value in returnWeapons.items():
+                    if attr not in weapons:
+                        weapons[attr] = value
+                    else:
+                        for faction in value["factions"]:
+                            if faction not in  weapons[attr]["factions"]:
+                                weapons[attr]["factions"].append(faction)
+
+            # If it's a file, we need to extract the data from it
+            elif os.path.isfile(baseFolder + item):
+                # Adjust path to load object based on where the file is located. Base game, expansions, and mods all are in different locations, so we need to cut and add accordingly.'
+                newBaseFolder = ""
+                if "content" in weaponsDirectory or "Content" in weaponsDirectory:
+                    pathToCutSearch = f"{installDirectory}SquadEditor\\Squad\\Content\\"
+                    newBaseFolder = "/Game/" + baseFolder[len(pathToCutSearch):]
+
+                elif "expansions" in weaponsDirectory or "Expansions" in weaponsDirectory:
+                    pathToCutSearch = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Expansions\\"
+                    newBaseFolder = "/" + baseFolder[len(pathToCutSearch):]
+
+                elif "mods" in weaponsDirectory or "Mods" in weaponsDirectory:
+                    pathToCutSearch = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Mods\\"
+                    newBaseFolder = "/" + baseFolder[len(pathToCutSearch):]
+
+                # Remove .uasset from asset name
+                itemName = item.split(".")[0]
+
+                unrealFaction = unreal.load_object(None, f"{newBaseFolder}{itemName}.{itemName}")
+                # Create a shorthand less descriptive version
+
+                # Check to see if the item is a faction setup, if it is then we can get the info we need from it
+                if unrealFaction.get_class().get_name() == "BP_SQFactionSetup_C":
+                    factionID = unrealFaction.faction_id
+
+                    # Loop through every role in the roles array
+                    for roleSetting in unrealFaction.roles:
+                        role = roleSetting.setting
+
+                        print("Looking at: " + role.get_name())
+                        # Loop through the inventory slots
+                        for inventorySlot in role.inventory:
+                            slotWeapons = inventorySlot.weapon_items
+                            # Loop through the weapons in the slot
+                            for slotWeapon in slotWeapons:
+                                weaponInSlotName = str(slotWeapon.equipable_item.get_name())
+
+                                if weaponInSlotName in weapons:
+                                    if str(factionID) not in weapons[weaponInSlotName]["factions"]:
+                                        weapons[weaponInSlotName]["factions"].append(str(factionID))
+                                else:
+                                    weapons[weaponInSlotName] = {
+                                        "factions": [str(factionID)]
+                                    }
+
+
+                x = 1
+                #print(item)
+
+    return weapons
 
 # ----- Code -----
 
@@ -65,7 +140,7 @@ for attr, value in weaponsDirectoryObject.items():
 
     print(f"Searching through {attr} factions...")
 
-    searchFolderForFactions(factionsDirectory)
+    weaponFactions = searchFolderForFactions(factionsDirectory)
 
     print(f"Searching through {attr} weapons...")
 
@@ -126,12 +201,22 @@ for attr, value in weaponsDirectoryObject.items():
             damageFOMaxDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTCloseDistance)
             damageFOMinDamage = uWD.weapon_config.damage_falloff_curve.get_float_value(damageFOTFarDistance)
 
+            factions = []
+
+            print(weaponName)
+            print(weaponFactions)
+            print(weaponFactions[weaponName + "_C"])
+            if weaponName + "_C" in weaponFactions:
+                factions = weaponFactions[weaponName + "_C"]["factions"]
+
+
             # Need to add: ICO
             try:
                 weaponInfo = {
                     "displayName": str(uWD.display_name),
                     "rawName": f"{weaponName}.{weaponName}_C",
                     "folder": weaponFolder,
+                    "factions": factions,
 
                     # Inventory Info
                     "inventoryInfo": {
