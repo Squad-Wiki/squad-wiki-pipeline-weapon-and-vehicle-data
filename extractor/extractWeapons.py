@@ -89,9 +89,23 @@ for attr, value in weaponsDirectoryObject.items():
             if "Generic" in weaponName:
                 continue
 
+            # Create new path for unreal reference
+            if "content" in weaponsDirectory or "Content" in weaponsDirectory:
+                pathToCut = f"{installDirectory}SquadEditor\\Squad\\Content\\"
+                newPath = "/Game/" + pathToSearch[len(pathToCut):]
+
+            if "expansions" in weaponsDirectory or "Expansions" in weaponsDirectory:
+                pathToCut = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Expansions\\"
+                newPath = "/" + pathToSearch[len(pathToCut):]
+
+            if "mods" in weaponsDirectory or "Mods" in weaponsDirectory:
+                pathToCut = f"{installDirectory}SquadEditor\\Squad\\Plugins\\Mods\\"
+                newPath = "/" + pathToSearch[len(pathToCut):]
+
+
+
             # Get unreal version of the file
-            # print(f"/Game/Blueprints/Items/{weaponFolder}/{weaponName}.{weaponName}_C")
-            unrealWeapon = unreal.load_object(None, f"/Game/Blueprints/Items/{weaponFolder}/{weaponName}.{weaponName}_C")
+            unrealWeapon = unreal.load_object(None, f"{newPath}/{weaponName}.{weaponName}_C")
             unrealWeaponDefault = unreal.get_default_object(unrealWeapon)
             # Create a shorthand less descriptive version
             uWD = unrealWeaponDefault
