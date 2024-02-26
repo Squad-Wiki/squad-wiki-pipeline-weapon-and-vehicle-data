@@ -13,7 +13,8 @@ installDirectory = "E:\\Squad SDK\\"
 exportDirectory = "E:\\Squad SDK\\"
 
 # Dict that contains directory and folders. Modders can add a new dict under vanilla with a directory and one set of sub-folders to look through.
-# Note that the file structure needs to be the same as vanilla. If your having issues, reach out on github
+# Note that the file structure needs to be the same as vanilla. If you're having issues, reach out on GitHub or Discord.
+# "GrenadeLaunchers", "RocketLaunchers", "Shotguns", "SubmachineGuns"
 weaponsDirectoryObject = {
     "vanilla": {
         "weaponDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Blueprints\\Items\\",
@@ -225,6 +226,64 @@ for attr, value in weaponsDirectoryObject.items():
                     attachmentName = attachment.get_name()
                     attachmentNames.append(attachmentName)
 
+            # -- ICO Static Info
+
+            staticInfoClass = unreal.get_default_object(uWD.item_static_info_class)
+
+            staticInfo = {
+                "sway": {
+                    "dynamic": {
+                        "lowStaminaSwayFactor": int(staticInfoClass.sway_data.dynamic_group.stamina.low_stamina_sway_factor),
+                        "fullStaminaSwayFactor": int(staticInfoClass.sway_data.dynamic_group.stamina.full_stamina_sway_factor),
+                        "holdingBreathSwayFactor": int(staticInfoClass.sway_data.dynamic_group.breath.holding_breath_sway_factor),
+                        "addMoveSway": int(staticInfoClass.sway_data.dynamic_group.movement.add_move_sway),
+                        "minMoveSwayFactor": int(staticInfoClass.sway_data.dynamic_group.movement.min_move_sway_factor),
+                        "maxMoveSwayFactor": int(staticInfoClass.sway_data.dynamic_group.movement.max_move_sway_factor),
+                    },
+                    "stance": {
+                        "proneADSSwayMin": int(staticInfoClass.sway_data.stance_group.prone.ads_sway_min),
+                        "proneSwayMin": int(staticInfoClass.sway_data.stance_group.prone.sway_min),
+                        "crouchADSSwayMin": int(staticInfoClass.sway_data.stance_group.crouch.ads_sway_min),
+                        "crouchSwayMin": int(staticInfoClass.sway_data.stance_group.crouch.sway_min),
+                        "standingADSSwayMin": int(staticInfoClass.sway_data.stance_group.standing.ads_sway_min),
+                        "standingSwayMin": int(staticInfoClass.sway_data.stance_group.standing.sway_min),
+                        "bipodADSSwayMin": int(staticInfoClass.sway_data.stance_group.bipod.ads_sway_min),
+                        "bipodSwayMin": int(staticInfoClass.sway_data.stance_group.bipod.sway_min),
+                    },
+                    "maxSway": int(staticInfoClass.sway_data.limits.final_sway_clamp),
+                },
+                "swayAlignment": {
+                    "dynamic": {
+                        "lowStaminaSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.stamina.low_stamina_sway_factor),
+                        "fullStaminaSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.stamina.full_stamina_sway_factor),
+                        "holdingBreathSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.breath.holding_breath_sway_factor),
+                        "addMoveSway": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.add_move_sway),
+                        "minMoveSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.min_move_sway_factor),
+                        "maxMoveSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.max_move_sway_factor),
+                    },
+                    "stance": {
+                        "proneADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.prone.ads_sway_min),
+                        "proneSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.prone.sway_min),
+                        "crouchADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.crouch.ads_sway_min),
+                        "crouchSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.crouch.sway_min),
+                        "standingADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.standing.ads_sway_min),
+                        "standingSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.standing.sway_min),
+                        "bipodADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.bipod.ads_sway_min),
+                        "bipodSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.bipod.sway_min),
+                    },
+                    "maxSway": int(staticInfoClass.sway_data.limits.final_sway_clamp),
+                },
+                "spring": {
+                    "weaponSpringSide": int(staticInfoClass.weapon_spring_side),
+                    "weaponSpringStiffness": int(staticInfoClass.weapon_spring_stiffness),
+                    "weaponSpringDamping": int(staticInfoClass.weapon_spring_critical_damping_factor),
+                    "weaponSpringMass": int(staticInfoClass.weapon_spring_mass)
+                },
+                "recoil": {
+
+                }
+            }
+
             # Need to add: ICO
             # -- Dict Creation --
             try:
@@ -302,6 +361,8 @@ for attr, value in weaponsDirectoryObject.items():
                         "skeletalMesh": str(uWD.mesh1p.skeletal_mesh.get_name()),
                         "attachments": attachmentNames,
                     },
+
+                    "staticInfo": staticInfo
 
                 }
 
