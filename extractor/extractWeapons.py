@@ -280,7 +280,18 @@ for attr, value in weaponsDirectoryObject.items():
                     "weaponSpringMass": int(staticInfoClass.weapon_spring_mass)
                 },
                 "recoil": {
-
+                    "camera": {
+                        "recoilCameraOffsetFactor": int(staticInfoClass.camera.recoil_camera_offset_factor),
+                        "recoilCameraOffsetInterpSpeed": int(staticInfoClass.camera.recoil_camera_offset_interp_speed),
+                        "recoilLofCameraOffsetLimit": int(staticInfoClass.camera.recoil_lof_camera_offset_limit),
+                        "recoilLofAttackInterpSpeed": int(staticInfoClass.camera.recoil_lof_attack_interp_speed),
+                        "recoilCanReleaseInterpSpeed": int(staticInfoClass.camera.recoil_can_release_interp_speed),
+                        "recoilLofReleaseInterpSpeed": int(staticInfoClass.camera.recoil_lof_release_interp_speed),
+                        "recoilAdsCameraShotInterpSpeed": int(staticInfoClass.camera.recoil_ads_camera_shot_interp_speed)
+                    },
+                    "dynamic": {
+                        
+                    }
                 }
             }
 
