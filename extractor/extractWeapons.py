@@ -233,61 +233,61 @@ for attr, value in weaponsDirectoryObject.items():
             staticInfo = {
                 "sway": {
                     "dynamic": {
-                        "lowStaminaSwayFactor": int(staticInfoClass.sway_data.dynamic_group.stamina.low_stamina_sway_factor),
-                        "fullStaminaSwayFactor": int(staticInfoClass.sway_data.dynamic_group.stamina.full_stamina_sway_factor),
-                        "holdingBreathSwayFactor": int(staticInfoClass.sway_data.dynamic_group.breath.holding_breath_sway_factor),
-                        "addMoveSway": int(staticInfoClass.sway_data.dynamic_group.movement.add_move_sway),
-                        "minMoveSwayFactor": int(staticInfoClass.sway_data.dynamic_group.movement.min_move_sway_factor),
-                        "maxMoveSwayFactor": int(staticInfoClass.sway_data.dynamic_group.movement.max_move_sway_factor),
+                        "lowStaminaSwayFactor": round(staticInfoClass.sway_data.dynamic_group.stamina.low_stamina_sway_factor, 5),
+                        "fullStaminaSwayFactor": round(staticInfoClass.sway_data.dynamic_group.stamina.full_stamina_sway_factor, 5),
+                        "holdingBreathSwayFactor": round(staticInfoClass.sway_data.dynamic_group.breath.holding_breath_sway_factor, 5),
+                        "addMoveSway": round(staticInfoClass.sway_data.dynamic_group.movement.add_move_sway, 5),
+                        "minMoveSwayFactor": round(staticInfoClass.sway_data.dynamic_group.movement.min_move_sway_factor, 5),
+                        "maxMoveSwayFactor": round(staticInfoClass.sway_data.dynamic_group.movement.max_move_sway_factor, 5),
                     },
                     "stance": {
-                        "proneADSSwayMin": int(staticInfoClass.sway_data.stance_group.prone.ads_sway_min),
-                        "proneSwayMin": int(staticInfoClass.sway_data.stance_group.prone.sway_min),
-                        "crouchADSSwayMin": int(staticInfoClass.sway_data.stance_group.crouch.ads_sway_min),
-                        "crouchSwayMin": int(staticInfoClass.sway_data.stance_group.crouch.sway_min),
-                        "standingADSSwayMin": int(staticInfoClass.sway_data.stance_group.standing.ads_sway_min),
-                        "standingSwayMin": int(staticInfoClass.sway_data.stance_group.standing.sway_min),
-                        "bipodADSSwayMin": int(staticInfoClass.sway_data.stance_group.bipod.ads_sway_min),
-                        "bipodSwayMin": int(staticInfoClass.sway_data.stance_group.bipod.sway_min),
+                        "proneADSSwayMin": round(staticInfoClass.sway_data.stance_group.prone.ads_sway_min, 5),
+                        "proneSwayMin": round(staticInfoClass.sway_data.stance_group.prone.sway_min, 5),
+                        "crouchADSSwayMin": round(staticInfoClass.sway_data.stance_group.crouch.ads_sway_min, 5),
+                        "crouchSwayMin": round(staticInfoClass.sway_data.stance_group.crouch.sway_min, 5),
+                        "standingADSSwayMin": round(staticInfoClass.sway_data.stance_group.standing.ads_sway_min, 5),
+                        "standingSwayMin": round(staticInfoClass.sway_data.stance_group.standing.sway_min, 5),
+                        "bipodADSSwayMin": round(staticInfoClass.sway_data.stance_group.bipod.ads_sway_min, 5),
+                        "bipodSwayMin": round(staticInfoClass.sway_data.stance_group.bipod.sway_min, 5),
                     },
-                    "maxSway": int(staticInfoClass.sway_data.limits.final_sway_clamp),
+                    "maxSway": round(staticInfoClass.sway_data.limits.final_sway_clamp, 5),
                 },
                 "swayAlignment": {
                     "dynamic": {
-                        "lowStaminaSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.stamina.low_stamina_sway_factor),
-                        "fullStaminaSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.stamina.full_stamina_sway_factor),
-                        "holdingBreathSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.breath.holding_breath_sway_factor),
-                        "addMoveSway": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.add_move_sway),
-                        "minMoveSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.min_move_sway_factor),
-                        "maxMoveSwayFactor": int(staticInfoClass.sway_alignment_data.dynamic_group.movement.max_move_sway_factor),
+                        "lowStaminaSwayFactor": round(staticInfoClass.sway_alignment_data.dynamic_group.stamina.low_stamina_sway_factor, 5),
+                        "fullStaminaSwayFactor": round(staticInfoClass.sway_alignment_data.dynamic_group.stamina.full_stamina_sway_factor, 5),
+                        "holdingBreathSwayFactor": round(staticInfoClass.sway_alignment_data.dynamic_group.breath.holding_breath_sway_factor, 5),
+                        "addMoveSway": round(staticInfoClass.sway_alignment_data.dynamic_group.movement.add_move_sway, 5),
+                        "minMoveSwayFactor": round(staticInfoClass.sway_alignment_data.dynamic_group.movement.min_move_sway_factor, 5),
+                        "maxMoveSwayFactor": round(staticInfoClass.sway_alignment_data.dynamic_group.movement.max_move_sway_factor, 5),
                     },
                     "stance": {
-                        "proneADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.prone.ads_sway_min),
-                        "proneSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.prone.sway_min),
-                        "crouchADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.crouch.ads_sway_min),
-                        "crouchSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.crouch.sway_min),
-                        "standingADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.standing.ads_sway_min),
-                        "standingSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.standing.sway_min),
-                        "bipodADSSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.bipod.ads_sway_min),
-                        "bipodSwayMin": int(staticInfoClass.sway_alignment_data.stance_group.bipod.sway_min),
+                        "proneADSSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.prone.ads_sway_min, 5),
+                        "proneSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.prone.sway_min, 5),
+                        "crouchADSSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.crouch.ads_sway_min, 5),
+                        "crouchSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.crouch.sway_min, 5),
+                        "standingADSSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.standing.ads_sway_min, 5),
+                        "standingSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.standing.sway_min, 5),
+                        "bipodADSSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.bipod.ads_sway_min, 5),
+                        "bipodSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.bipod.sway_min, 5),
                     },
-                    "maxSway": int(staticInfoClass.sway_data.limits.final_sway_clamp),
+                    "maxSway": round(staticInfoClass.sway_data.limits.final_sway_clamp, 5),
                 },
                 "spring": {
-                    "weaponSpringSide": int(staticInfoClass.weapon_spring_side),
-                    "weaponSpringStiffness": int(staticInfoClass.weapon_spring_stiffness),
-                    "weaponSpringDamping": int(staticInfoClass.weapon_spring_critical_damping_factor),
-                    "weaponSpringMass": int(staticInfoClass.weapon_spring_mass)
+                    "weaponSpringSide": round(staticInfoClass.weapon_spring_side, 5),
+                    "weaponSpringStiffness": round(staticInfoClass.weapon_spring_stiffness, 5),
+                    "weaponSpringDamping": round(staticInfoClass.weapon_spring_critical_damping_factor, 5),
+                    "weaponSpringMass": round(staticInfoClass.weapon_spring_mass, 5)
                 },
                 "recoil": {
                     "camera": {
-                        "recoilCameraOffsetFactor": int(staticInfoClass.camera.recoil_camera_offset_factor),
-                        "recoilCameraOffsetInterpSpeed": int(staticInfoClass.camera.recoil_camera_offset_interp_speed),
-                        "recoilLofCameraOffsetLimit": int(staticInfoClass.camera.recoil_lof_camera_offset_limit),
-                        "recoilLofAttackInterpSpeed": int(staticInfoClass.camera.recoil_lof_attack_interp_speed),
-                        "recoilCanReleaseInterpSpeed": int(staticInfoClass.camera.recoil_can_release_interp_speed),
-                        "recoilLofReleaseInterpSpeed": int(staticInfoClass.camera.recoil_lof_release_interp_speed),
-                        "recoilAdsCameraShotInterpSpeed": int(staticInfoClass.camera.recoil_ads_camera_shot_interp_speed)
+                        "recoilCameraOffsetFactor": round(staticInfoClass.recoil_camera_offset_factor, 5),
+                        "recoilCameraOffsetInterpSpeed": round(staticInfoClass.recoil_camera_offset_interp_speed, 5),
+                        "recoilLofCameraOffsetLimit": round(staticInfoClass.recoil_lof_camera_offset_limit, 5),
+                        "recoilLofAttackInterpSpeed": round(staticInfoClass.recoil_lof_attack_interp_speed, 5),
+                        "recoilCanReleaseInterpSpeed": round(staticInfoClass.recoil_can_release_interp_speed, 5),
+                        "recoilLofReleaseInterpSpeed": round(staticInfoClass.recoil_lof_release_interp_speed, 5),
+                        "recoilAdsCameraShotInterpSpeed": round(staticInfoClass.recoil_ads_camera_shot_interp_speed, 5)
                     },
                     "dynamic": {
                         
@@ -309,7 +309,7 @@ for attr, value in weaponsDirectoryObject.items():
                         "description": str(uWD.item_description),
                         "HUDTexture": str(uWD.hud_selected_texture.get_name()),
                         "inventoryTexture": str(uWD.hud_texture.get_name()),
-                        "ammoPerRearm": int(uWD.ammo_per_rearm_item),
+                        "ammoPerRearm": round(uWD.ammo_per_rearm_item, 5),
                         "showItemCount": bool(uWD.show_item_count_in_inventory),
                         "showMagCount": bool(uWD.show_mag_count_in_inventory),
                     },
@@ -317,52 +317,52 @@ for attr, value in weaponsDirectoryObject.items():
                     # Weapon info
                     "weaponInfo": {
                         # Mag info
-                        "maxMags": int(uWD.weapon_config.max_mags),
-                        "roundsPerMag": int(uWD.weapon_config.rounds_per_mag),
+                        "maxMags": round(uWD.weapon_config.max_mags, 5),
+                        "roundsPerMag": round(uWD.weapon_config.rounds_per_mag, 5),
                         "roundInChamber": bool(uWD.weapon_config.allow_round_in_chamber),
                         "allowSingleLoad": bool(uWD.weapon_config.allow_single_load),
 
                         # Shooting
                         "firemodes": list(uWD.weapon_config.firemodes),
-                        "timeBetweenShots": int(uWD.weapon_config.time_between_shots),  # Burst, auto fire
-                        "timeBetweenSingleShots": int(uWD.weapon_config.time_between_single_shots),  # Semi-Auto
+                        "timeBetweenShots": round(uWD.weapon_config.time_between_shots, 5),  # Burst, auto fire
+                        "timeBetweenSingleShots": round(uWD.weapon_config.time_between_single_shots, 5),  # Semi-Auto
                         "avgFireRate": bool(uWD.weapon_config.average_fire_rate),
                         "resetBurstOnTriggerRelease": bool(uWD.weapon_config.reset_burst_on_trigger_release),
 
                         # Reloading
-                        "reloadCancelGracePeriod": int(uWD.weapon_config.finish_reload_grace_period),  # "Finish reload grace period for cancelling reload close to finishing the reload process"
-                        "tacticalReloadDuration": int(uWD.weapon_config.tactical_reload_duration),
-                        "dryReloadDuration": int(uWD.weapon_config.dry_reload_duration),
-                        "tacticalReloadBipodDuration": int(uWD.weapon_config.tactical_reload_bipod_duration),
-                        "dryReloadBipodDuration": int(uWD.weapon_config.reload_dry_bipod_duration),
+                        "reloadCancelGracePeriod": round(uWD.weapon_config.finish_reload_grace_period, 5),  # "Finish reload grace period for cancelling reload close to finishing the reload process"
+                        "tacticalReloadDuration": round(uWD.weapon_config.tactical_reload_duration, 5),
+                        "dryReloadDuration": round(uWD.weapon_config.dry_reload_duration, 5),
+                        "tacticalReloadBipodDuration": round(uWD.weapon_config.tactical_reload_bipod_duration, 5),
+                        "dryReloadBipodDuration": round(uWD.weapon_config.reload_dry_bipod_duration, 5),
 
                         # ADS
-                        "ADSPostTransitionRation": int(uWD.weapon_config.ads_post_transition_ratio),
+                        "ADSPostTransitionRation": round(uWD.weapon_config.ads_post_transition_ratio, 5),
                         "allowZoom": bool(uWD.weapon_config.allow_zoom),  # Allow ADS
-                        "ADSMoveSpeedMultiplier": int(uWD.ads_move_speed_multiplier),
+                        "ADSMoveSpeedMultiplier": round(uWD.ads_move_speed_multiplier, 5),
 
                         # Projectile
                         "projectileClass": str(uWD.weapon_config.projectile_class.get_name()),
                         "tracerProjectileClass": tracerProjectileClass,
-                        "roundsBetweenTracer": int(uWD.weapon_config.rounds_between_tracer),
-                        "muzzleVelocity": int(uWD.weapon_config.muzzle_velocity),
+                        "roundsBetweenTracer": round(uWD.weapon_config.rounds_between_tracer, 5),
+                        "muzzleVelocity": round(uWD.weapon_config.muzzle_velocity, 5),
 
                         # Damage
                         "damageFallOffMinDamage": damageFOMinDamage,
                         "damageFallOffMinDamageDistance": damageFOTFarDistance,
                         "damageFallOffMaxDamage": damageFOMaxDamage,
                         "damageFallOffMaxDamageDistance": damageFOTCloseDistance,
-                        "armorPenetrationDepthMM": int(uWD.weapon_config.armor_penetration_depth_millimeters),
-                        "traceDistanceAfterPen": int(uWD.weapon_config.trace_distance_after_penetration_meters),
+                        "armorPenetrationDepthMM": round(uWD.weapon_config.armor_penetration_depth_millimeters, 5),
+                        "traceDistanceAfterPen": round(uWD.weapon_config.trace_distance_after_penetration_meters, 5),
 
                         # Accuracy
-                        "MOA": int(uWD.weapon_config.moa),
+                        "MOA": round(uWD.weapon_config.moa),
 
                         "emptyMagReload": bool(uWD.weapon_config.empty_mag_to_reload),
 
                         # Equipping
-                        "equipDuration": int(uWD.equip_duration),
-                        "unequipDuration": int(uWD.unequip_duration),
+                        "equipDuration": round(uWD.equip_duration, 5),
+                        "unequipDuration": round(uWD.unequip_duration, 5),
                     },
 
                     # Focus info
@@ -378,16 +378,16 @@ for attr, value in weaponsDirectoryObject.items():
                 }
 
                 '''"focusInfo": {
-                                    "focusDistanceHipfire": int(uWD.dof_focus_distance_hipfire),
-                                    "focusDistanceADS": int(uWD.dof_focus_distance_ads),
-                                    "apertureHipfire": int(uWD.dof_aperture_hipfire),
-                                    "apertureADS": int(uWD.dof_aperture_ads),
-                                    "aimTimeMultiplier": int(uWD.aim_time_multiplier),
+                                    "focusDistanceHipfire": round(uWD.dof_focus_distance_hipfire),
+                                    "focusDistanceADS": round(uWD.dof_focus_distance_ads),
+                                    "apertureHipfire": round(uWD.dof_aperture_hipfire),
+                                    "apertureADS": round(uWD.dof_aperture_ads),
+                                    "aimTimeMultiplier": round(uWD.aim_time_multiplier),
                                     "transitionCurve": "TOBEADDED",
-                                    "recoilRampUpSpeed": int(uWD.dof_recoil_ramp_up_speed),
-                                    "recoilDecaySpeed": int(uWD.dof_recoild_decay_speed),
-                                    "recoilRandomMin": int(uWD.dof_recoil_random_min),
-                                    "recoilRandomMax": int(uWD.dof_recoil_random_max)
+                                    "recoilRampUpSpeed": round(uWD.dof_recoil_ramp_up_speed),
+                                    "recoilDecaySpeed": round(uWD.dof_recoild_decay_speed),
+                                    "recoilRandomMin": round(uWD.dof_recoil_random_min),
+                                    "recoilRandomMax": round(uWD.dof_recoil_random_max)
                                 },'''
             except AttributeError:
                 raise InvalidAttribute(weaponName)
