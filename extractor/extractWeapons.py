@@ -277,7 +277,7 @@ for attr, value in weaponsDirectoryObject.items():
                         "bipodADSSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.bipod.ads_sway_min, 5),
                         "bipodSwayMin": round(staticInfoClass.sway_alignment_data.stance_group.bipod.sway_min, 5),
                     },
-                    "maxSway": round(staticInfoClass.sway_data.limits.final_sway_clamp, 5),
+                    "maxSway": round(staticInfoClass.sway_alignment_data.limits.final_sway_clamp, 5),
                 },
                 "spring": {
                     "weaponSpringSide": round(staticInfoClass.weapon_spring_side, 5),
@@ -296,7 +296,41 @@ for attr, value in weaponsDirectoryObject.items():
                         "recoilAdsCameraShotInterpSpeed": round(staticInfoClass.recoil_ads_camera_shot_interp_speed, 5)
                     },
                     "dynamic": {
-                        
+                        "movement": {
+                            "moveRecoilFactorRelease": round(staticInfoClass.move_recoil_factor_release, 5),
+                            "addMoveRecoil": round(staticInfoClass.add_move_recoil, 5),
+                            "maxMoveRecoilFactor": round(staticInfoClass.max_move_recoil_factor, 5),
+                            "minMoveRecoilFactor": round(staticInfoClass.min_move_recoil_factor, 5),
+                            "recoilAlignmentMovementAddative": round(staticInfoClass.recoil_alignment_movement_addative, 5),
+                            "recoilAlignmentMovementExponent": round(staticInfoClass.recoil_alignment_movement_exponent, 5)
+                        },
+                        "stamina": {
+                            "lowStaminaRecoilFactor": round(staticInfoClass.low_stamina_recoil_factor, 5),
+                            "fullStaminaRecoilFactor": round(staticInfoClass.full_stamina_recoil_factor, 5),
+                            "recoilAlignmentStaminaAddative": round(staticInfoClass.recoil_alignment_stamina_addative, 5),
+                            "recoilAlignmentStaminaExponent": round(staticInfoClass.recoil_alignment_stamina_exponent, 5)
+                        },
+                        "shoulder": {
+                            "recoilAlignmentShoulderMax": {
+                                "x": round(staticInfoClass.recoil_alignment_shoulder_max.x, 5),
+                                "y" : round(staticInfoClass.recoil_alignment_shoulder_max.y, 5)
+                            },
+                            "recoilAlignmentShoulderAngleLimits": {
+                                "x": round(staticInfoClass.recoil_alignment_shoulder_angle_limits.x, 5),
+                                "y" : round(staticInfoClass.recoil_alignment_shoulder_angle_limits.y, 5)
+                            }
+                        },
+                        "grip": {
+                            "recoilAlignmentGripMax": {
+                                "x": round(staticInfoClass.recoil_alignment_grip_max.x, 5),
+                                "y" : round(staticInfoClass.recoil_alignment_grip_max.y, 5)
+                            },
+                            "recoilAlignmentGripAngleLimits": {
+                                "x": round(staticInfoClass.recoil_alignment_grip_angle_limits.x, 5),
+                                "y" : round(staticInfoClass.recoil_alignment_grip_angle_limits.y, 5)
+                            }
+                        },
+                        "recoilAlignmentMultiplierMax": round(staticInfoClass.recoil_alignment_multiplier_max, 5),
                     }
                 }
             }
