@@ -28,15 +28,20 @@ This pipeline currently only consists of one compnent:
 
 You will find output files for all new squad releases in the `data/_currentVersion` folder. Invidual version folders can be also be found in the `data` folder.
 
+A help guide for the output files can be found [here](./doc/weapon.md)
 
 ## Usage
 ### Installation
 
-Read about how to install the pipeline here
+The latest version of the [Squad SDK](https://squad.fandom.com/Squad_SDK) is required. You will find instructions on how to install the Squad SDK [here](https://squad.fandom.com/Squad_SDK#Downloading_the_Epic_Games_Launcher). Beyond that, simply download the extractor files.
 
 ### Configuration
 
-Read about how to configure the pipeline here
+Read about how to configure the pipeline [here](/doc/configuration.md)
+
+### Usage
+
+Read about how to use the extractor [here](/doc/usage.md)
 
 ## Contributing
 
