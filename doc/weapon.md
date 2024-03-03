@@ -26,7 +26,7 @@ Comments with "" are pulled directly from SDK. Some values are currently unknown
         # Weapon Config Info
         "weaponInfo": {
             # Mag info
-            "maxMags": 8,               # Mag # of mags
+            "maxMags": 8,               # Max # of mags
             "roundsPerMag": 75,         # Rounds per mag
             "roundInChamber": false,    # Allow a round to stay loaded in chamber
             "allowSingleLoad": false,   # Allow item to be loaded bullet by bullet
