@@ -4,7 +4,7 @@
 #### Squad Wiki Pipeline: Weapon and Vehicle Data
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-data)
-![GitHub](https://img.shields.io/github/license/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-dataa)
+![GitHub](https://img.shields.io/github/license/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-data)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Squad-Wiki/squad-wiki-pipeline-weapon-and-vehicle-data)
 
 ![Discord](https://img.shields.io/discord/553984341143846912?style=flat&logo=discord&logoColor=FFC200)
