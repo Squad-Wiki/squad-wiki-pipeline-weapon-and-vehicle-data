@@ -19,7 +19,8 @@ weaponsDirectoryObject = {
     "vanilla": {
         "weaponDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Blueprints\\Items\\",
         "factionsDirectory": f"{installDirectory}SquadEditor\\Squad\\Content\\Settings\\FactionSetups\\",
-        "folders": ["MachineGuns", "Pistols", "Rifles"]
+        "folders": ["MachineGuns", "Pistols", "Rifles"],
+        "factionBlacklist": ["Templates", "TestFactionSetups", "UI", "Tutorials", "Units"]
     },
 }
 
@@ -39,9 +40,9 @@ class InvalidDirectoryKeySetup(KeyError):
     def __init__(self, type, key):
         raise KeyError(f"Key {key} is missing in {type} in the weaponsDirectoryObject")
 
-def searchFolderForFactions(baseFolder):
+def searchFolderForFactions(baseFolder, directoryType):
     # Blacklist for folders/files to not check CASE SENSITIVE
-    blacklist = ["Templates", "TestFactionSetups", "UI", "Tutorials", "Units"]
+    blacklist = weaponsDirectoryObject[directoryType]["factionBlacklist"]
     weapons = {}
     '''
         "name": {
@@ -53,7 +54,7 @@ def searchFolderForFactions(baseFolder):
         if not any(x == item for x in blacklist):
             # If it's a folder, we need to search it so recursively search
             if os.path.isdir(baseFolder + item):
-                returnWeapons = searchFolderForFactions(baseFolder + item + "\\")
+                returnWeapons = searchFolderForFactions(baseFolder + item + "\\", directoryType)
 
                 # Merge returned weapon and current weapons
                 for attr, value in returnWeapons.items():
@@ -139,11 +140,16 @@ for attr, value in weaponsDirectoryObject.items():
         listOfWeaponFolders = value["folders"]
     except KeyError:
         raise InvalidDirectoryKeySetup(attr, "folders")
+    
+    try:
+        test = value["factionBlacklist"]
+    except KeyError:
+        raise InvalidDirectoryKeySetup(attr, "factionBlacklist")
 
     # --- Get Faction Info ---
     print(f"Searching through {attr} factions...")
 
-    weaponFactions = searchFolderForFactions(factionsDirectory)
+    weaponFactions = searchFolderForFactions(factionsDirectory, attr)
 
     # --- Get Weapon Info ---
     print(f"Searching through {attr} weapons...")
